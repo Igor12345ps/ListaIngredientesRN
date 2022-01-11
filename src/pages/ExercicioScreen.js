@@ -13,18 +13,18 @@ function ExercicioScreen() {
     const navigation = useNavigation();
 
     const [ingrediente, setIngrediente] = useState("");
-    const [items, setItems] = useState([]);
+    const [items, setItems] = useState(lista);
 
     useLayoutEffect(() => {
         navigation.setOptions({
             headerRight: () => <Adicionar onPress={handleAdicionar} />
         });
-    }, []);
+    }, [ingrediente]);
 
     const handleAdicionar = () => {
 
         if (ingrediente.trim() != '') {
-            let newItems = [...items];
+            var newItems = [...items];
             newItems.push({
                 id: uuid.v4(),
                 ingrediente: ingrediente
